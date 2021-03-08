@@ -1,0 +1,221 @@
+* {
+  display: inline-block;
+    font-family: "Press Start 2P";
+    color: whitesmoke;
+}
+body {
+      background: linear-gradient(
+      135deg,
+      rgba(111, 245, 227, 0) 0%,
+      rgba(59, 172, 247, 0) 33%,
+      rgba(11, 192, 216, 0.05) 33%,
+      rgba(4, 43, 219, 0) 66%,
+      rgba(255, 255, 255, 0) 66%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    black;
+  height: 100%;
+  width: 100%;
+}
+.header {
+  height: 50px;
+  width: 100%;
+  border: 1px solid green;
+  margin: 20px;
+}
+#header-left {
+  height: 50px;
+  width: 50px;
+}
+#slika{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+#main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.proba-template {
+    height: 200px;
+  width: 200px;
+  border: 1px solid green;
+  background: linear-gradient(
+    180deg,
+    rgb(0, 0, 0),
+    rgb(80, 78, 78),
+    rgb(24, 21, 21)
+  );
+  cursor: pointer;
+}
+.proba-template > h1 {
+      color: white;
+  font-family: "Press Start 2P";
+  animation: glitch1 2.5s infinite;
+  
+}
+
+#footer {
+  margin: 20px;
+  height: 50px;
+  width: 100%;
+  border: 1px solid green;
+}
+
+/* ________   STAJLING ZA PRVI MODAL   ____________ */
+
+.modal {
+  height: 400px;
+  width: 600px;
+  border: 1px solid green;
+  color: white;
+    background: linear-gradient(
+    180deg,
+    rgb(0, 0, 0, 0.9),
+    rgb(80, 78, 78, 0.8),
+    rgb(24, 21, 21, 0.7)
+  );
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+    background: linear-gradient(
+    180deg,
+    rgb(0, 0, 0, 0.7),
+    rgba(61, 59, 59, 0.3),
+    rgb(24, 21, 21, 0.4)
+  );
+  /* background-color: rgba(0, 0, 0, 0.7); */
+  align-items: center;
+}
+#button {
+  height: 20px;
+  width: 20px;
+  color:green;
+  border: 1px dotted green;
+
+}
+.title {
+  color: white;
+    font-family: "Press Start 2P";
+  animation: glitch1 2.5s infinite;
+}
+
+.images{
+  display: grid;
+}
+
+
+
+/* #template-proba {
+  color: white;
+    margin: 20px;
+  height: 80px;
+  width: 60%;
+  border: 1px solid green;
+} */
+
+/* #canv{
+  margin: 50px;
+  left: 40%;
+    border: 1px solid green;
+    background-image: url("output-onlinepngtools.png");
+    opacity: 0.7;
+}
+.canvas {
+  left: 40;
+  height: 200px;
+} */
+
+
+.proba {
+  color: white;
+  font-family: "Press Start 2P";
+  animation: glitch1 2.5s infinite;
+}
+
+
+/*A NI M ACIJAE*/
+
+@keyframes glitch1 {
+  0% {
+    transform: none;
+    opacity: 1;
+  }
+  7% {
+    transform: skew(-0.5deg, -0.9deg);
+    opacity: 0.75;
+  }
+  10% {
+    transform: none;
+    opacity: 1;
+  }
+  27% {
+    transform: none;
+    opacity: 1;
+  }
+  30% {
+    transform: skew(0.8deg, -0.1deg);
+    opacity: 0.75;
+  }
+  35% {
+    transform: none;
+    opacity: 1;
+  }
+  52% {
+    transform: none;
+    opacity: 1;
+  }
+  55% {
+    transform: skew(-1deg, 0.2deg);
+    opacity: 0.75;
+  }
+  50% {
+    transform: none;
+    opacity: 1;
+  }
+  72% {
+    transform: none;
+    opacity: 1;
+  }
+  75% {
+    transform: skew(0.4deg, 1deg);
+    opacity: 0.75;
+  }
+  80% {
+    transform: none;
+    opacity: 1;
+  }
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* 
+  background: repeating-linear-gradient(
+    45deg,
+    rgb(247, 146, 221) 0px,
+    rgb(46, 174, 196) 3px,
+    rgb(190, 0, 41) 4px
+  ); */
+
+/*OVO JE BIO ORIGINAL ZA BODY*/
+    /* background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0) 33%,
+      rgba(255, 255, 255, 0.05) 33%,
+      rgba(0, 0, 0, 0) 66%,
+      rgba(255, 255, 255, 0) 66%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    black;

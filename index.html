@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <title></title>
+  </head>
+  <body>
+    <header class="header">
+      <div id="header-left">
+        <img src="mgi.jpg" id="slika" alt="go" />
+      </div>
+    </header>
+    <div id="main">
+      <div class="proba-template">
+        <h1>ABOUT ME</h1>
+      </div>
+      <div class="proba-template" @click="openModal">
+        <h1>__PRO<br />JECTS</h1>
+      </div>
+      <div class="proba-template">
+        <h1>CON<br />TACT</h1>
+      </div>
+    </div>
+    <projects-modal></projects-modal>
+
+    <!-- <div class="canvas">
+      <canvas id="canv" width="600" height="200"></canvas>
+    </div> -->
+
+    <footer id="footer">sentient_internet</footer>
+
+    <!--OVO JE TEMPLATE ZA PROJECTS MODAL-->
+    <script id="projects" type="text/x-template">
+      <div class="overlay">
+        <div class="modal">
+          <button id="button">X</button>
+          <h1 class="title">
+            <!-- {{ title }} -->
+          </h1>
+          <div class="images">
+            <img/>
+          </div>
+        </div>
+      </div>
+    </script>
+
+    <!--TEMPLATE 2-->
+    <script id="template-prvi" type="text/x-template">
+      <div class="proba-template">
+        <h1>{{ heading }}</h1>
+      </div>
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script src="vue.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
