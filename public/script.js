@@ -42,10 +42,10 @@ Vue.component("projects-modal", {
   data: function () {
     //DODAO SVE IZ IMGBOARD
     return {
-      id,
-      title,
-      directory,
-      description,
+      id="",
+      title="",
+      directory="",
+      description="",
     };
   },
 
@@ -107,21 +107,14 @@ new Vue({
     // sayGreeting: "hello",
   },
   mounted: function () {
-    console.log("props: ", this.id, this.title);
-
-    // console.log("mounted!!!!");
-    // console.log('this: ',this);
-    // console.log("this.name", this.name);
-    console.log("this.cities before axios request: ", this.cities);
-    console.log("this before axios request: ", this);
     var self = this;
-    axios.get("/cities").then(function (response) {
+    axios.get("/projects").then(function (response) {
       console.log("response", response);
       console.log("self: ", self);
       console.log("this inside then: ", this);
-      console.log("this.cities inside then: ", this.cities);
+      console.log("this.cities inside then: ", this.projects);
       // this.cities = response.data;
-      self.cities = response.data;
+      self.projects = response.data;
     });
   },
   methods: {
