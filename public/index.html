@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="style.css"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
-    <title></title>
+    <title>PORTFOLOIO</title>
   </head>
   <body>
     <header class="header">
@@ -21,14 +21,17 @@
       <div class="proba-template">
         <h1>ABOUT ME</h1>
       </div>
-      <div class="proba-template" @click="openModal">
+      <div class="proba-template" v-on:click="openModal">
         <h1>__PRO<br />JECTS</h1>
       </div>
       <div class="proba-template">
         <h1>CON<br />TACT</h1>
       </div>
+      <projects-modal
+        v-if="openModal"
+        @click="openModal = true"
+      ></projects-modal>
     </div>
-    <projects-modal></projects-modal>
 
     <!-- <div class="canvas">
       <canvas id="canv" width="600" height="200"></canvas>
@@ -40,17 +43,17 @@
     <script id="projects" type="text/x-template">
       <div class="overlay">
         <div class="modal">
-          <button id="button">X</button>
-          <h1 class="title">
-            <!-- {{ title }} -->
-          </h1>
-          <div class="images">
+          <ul>
+            <li>
+
+            </li>
+          </ul>
+          <div class="images" v-for="image in images">   <!--novo-->
             <img/>
           </div>
         </div>
       </div>
     </script>
-
     <!--TEMPLATE 2-->
     <script id="template-prvi" type="text/x-template">
       <div class="proba-template">
