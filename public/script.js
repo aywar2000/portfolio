@@ -26,39 +26,45 @@ console.log("aloha");
 // }
 // canVas();
 
-// Vue.component("komponenta-proba", {
-//   template: "#template-prvi",
-//   props: ["title"],
-//   data: function () {
-//     return {
-//       heading: "PROJECTS",
-//     };
-//   },
-// });
+Vue.component("komponenta-about", {
+  template: "#template-prvi",
+  props: ["title"],
+  showAbout: false,
+  data: function () {
+    return {
+      heading: "ej",
+    };
+  },
+});
 
 Vue.component("projects-modal", {
   template: "#projects",
+  click: Boolean,
   props: ["id", "title", "directory", "description"],
+  // openModal: true,
   data: function () {
-    //DODAO SVE IZ IMGBOARD
     return {
-      id="",
-      title="",
-      directory="",
-      description="",
+      projects: [],
     };
   },
-
+  // mounted: function getProjects() {
+  //   var self = this;
+  //   axios.get("/projects").then(function (response) {
+  //     console.log("response", response);
+  //     console.log("self: ", self);
+  //     // console.log("this inside then: ", this);
+  //     console.log("this.projects inside then: ", this.projects);
+  //     self.projects = response.data;
+  //   });
+  // },
   methods: {
     openModal: function (e) {
       console.log("click happens");
       //console.log("propzz", this.props);
-      this.$emit("openModal");
+      this.$emit("click");
     },
     closeModal: function (e) {
-      console.log(
-        "closeModal runs and about to emit an event from the component!!!!!!"
-      );
+      console.log("zatvorio");
       this.$emit("close");
     },
   },
@@ -66,11 +72,8 @@ Vue.component("projects-modal", {
 
 new Vue({
   el: "#main",
-  // components: {
-  //   "projects-modal": projects-modal
-  // }
   data: {
-    // openModal: true,
+    title: ["da original tru rastafaraj"],
     projects: [
       {
         id: 1,
@@ -103,35 +106,26 @@ new Vue({
           "a search engine for music artists and albums utilizing spotify's API",
       },
     ],
-    // checkForSomething: 10,
-    // sayGreeting: "hello",
   },
-  mounted: function () {
+  mounted: function getProjects() {
     var self = this;
     axios.get("/projects").then(function (response) {
       console.log("response", response);
       console.log("self: ", self);
-      console.log("this inside then: ", this);
-      console.log("this.cities inside then: ", this.projects);
-      // this.cities = response.data;
+      // console.log("this inside then: ", this);
+      console.log("this.projects inside then: ", this.projects);
       self.projects = response.data;
     });
   },
   methods: {
-    openModal: function (e) {
+    openModal: function () {
       console.log("click");
-      this.openModal = !this.openModal;
+      // this.openModal = !this.openModal;
     },
 
-    emphasize: function (e) {
-      console.log("bogamievoga");
-      e.target.style.textDecoration = "underline";
-    },
-    closeMePlease: function () {
-      console.log(
-        "closeMePlease in the instance / parent is running! This was emitted from the component"
-      );
-      // this is where you want to update data to close the modal - set id to null
+    closeModal: function () {
+      console.log("from component to main");
+      id: null;
     },
   },
 });

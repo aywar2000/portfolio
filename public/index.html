@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
@@ -18,21 +18,27 @@
       </div>
     </header>
     <div id="main">
+      <ul class="proba-template">
+        <li v-for="project in projects" :key="project.id">
+          <p>{{ project.title }}</p>
+        </li>
+      </ul>
       <div class="proba-template">
         <h1>ABOUT ME</h1>
       </div>
-      <div class="proba-template" v-on:click="openModal">
-        <h1>__PRO<br />JECTS</h1>
+      <div>
+        <!--v-for="project in projects"-->
+        <button class="proba-template" @click="openModal">
+          <!--click je ime eventa, do something=open modal-->
+          <h1>__PRO<br />JECTS</h1>
+        </button>
       </div>
       <div class="proba-template">
         <h1>CON<br />TACT</h1>
       </div>
-      <projects-modal
-        v-if="openModal"
-        @click="openModal = true"
-      ></projects-modal>
+      <projects-modal v-if="openModal === 'true'" :id="id"></projects-modal>
+      <komponenta-about v-show="showAbout"></komponenta-about>
     </div>
-
     <!-- <div class="canvas">
       <canvas id="canv" width="600" height="200"></canvas>
     </div> -->
@@ -44,8 +50,9 @@
       <div class="overlay">
         <div class="modal">
           <ul>
-            <li>
-
+            <li v-for="project in projects"  :title="title">
+              <p>{{ project.title }}</p>
+              <p>{{ project.description }}</p>
             </li>
           </ul>
           <div class="images">   <!--novo-->
@@ -68,3 +75,8 @@
     <script src="script.js"></script>
   </body>
 </html>
+
+<!--IZ MODALA U MAINu-->
+<!-- v-if="openModal"
+        :id="projects"
+        @close="closeModal" -->
