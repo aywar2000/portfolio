@@ -1,67 +1,97 @@
 console.log("aloha");
 
-// function canVas() {
-//   var canvas = document.getElementById("canv");
-//   console.log("cancas!", canvas);
-//   const ctx = canvas.getContext("2d");
-//   ctx.beginPath();
-//   ctx.strokeStyle = "rgb(58, 255, 58)";
-//   ctx.lineWidth = 5;
-//   ctx.shadowOffsetX = 3;
-//   ctx.shadowOffsetY = 3;
-//   ctx.shadowBlur = 10;
-//   ctx.shadowColor = "rgb(58, 255, 58)";
-//   ctx.stroke();
-//   //sa beginpath počinje
-//   ctx.beginPath();
-//   ctx.moveTo(100, 0);
-//   ctx.lineTo(0, 200);
-//   ctx.moveTo(100, 0);
-//   ctx.lineTo(200, 200);
-//   ctx.moveTo(100, 0);
-//   ctx.lineTo(400, 400);
-//   ctx.lineTo(0, 200);
-//   ctx.stroke();
-//   //završava
-// }
-// canVas();
+function canVas() {
+  var canvas = document.getElementById("canv");
+  console.log("cancas!", canvas);
+  const ctx = canvas.getContext("2d");
+  ctx.beginPath();
+  ctx.strokeStyle = "rgb(58, 255, 58)";
+  ctx.lineWidth = 3;
+  ctx.shadowOffsetX = 3;
+  ctx.shadowOffsetY = 3;
+  ctx.shadowBlur = 10;
+  ctx.shadowColor = "rgb(58, 255, 58)";
+  ctx.stroke();
+  //sa beginpath počinje
+  //glavna
+  ctx.beginPath();
+  ctx.moveTo(300, 0);
+  ctx.lineTo(170, 200);
+  ctx.moveTo(300, 0);
+  ctx.lineTo(370, 200);
+  ctx.moveTo(300, 0);
+  ctx.lineTo(450, 200);
+  ctx.lineTo(0, 200);
+  ctx.stroke();
+  //završava
+  //lijevo
+  ctx.beginPath();
+  ctx.moveTo(130, 100);
+  ctx.lineTo(50, 200);
+  ctx.moveTo(130, 100);
+  ctx.lineTo(180, 180);
+  ctx.moveTo(130, 100);
+  ctx.lineTo(170, 222);
+  ctx.stroke();
+  //mjesec
+  ctx.beginPath();
+  ctx.moveTo(130, 500);
+  ctx.lineTo(50, 450);
+  ctx.beginPath();
+  ctx.arc(55, 55, 30, 0, Math.PI * 2, true); // Outer circle
+  ctx.moveTo(110, 75);
+  ctx.stroke();
+  //desna
+  ctx.beginPath();
+  ctx.moveTo(500, 50);
+  ctx.lineTo(420, 162);
+  ctx.moveTo(500, 50);
+  ctx.lineTo(590, 200);
+  ctx.moveTo(500, 50);
+  ctx.lineTo(600, 160);
+  ctx.stroke();
+}
+canVas();
 
 Vue.component("komponenta-about", {
   template: "#template-prvi",
   props: ["title"],
-  showAbout: false,
+
   data: function () {
     return {
-      heading: "ej",
+      showAbout: false,
+      heading: "tu nema ničega",
     };
   },
 });
 
 Vue.component("projects-modal", {
   template: "#projects",
-  click: Boolean,
   props: ["id", "title", "directory", "description"],
-  // openModal: true,
   data: function () {
     return {
+      showModal: false,
       projects: [],
     };
   },
-  // mounted: function getProjects() {
-  //   var self = this;
-  //   axios.get("/projects").then(function (response) {
-  //     console.log("response", response);
-  //     console.log("self: ", self);
-  //     // console.log("this inside then: ", this);
-  //     console.log("this.projects inside then: ", this.projects);
-  //     self.projects = response.data;
-  //   });
-  // },
+  mounted: function () {
+    this.getProjects();
+  },
+
   methods: {
-    openModal: function (e) {
-      console.log("click happens");
-      //console.log("propzz", this.props);
-      this.$emit("click");
+    openModal(e) {
+      this.$emit(click, (openModal = true));
+    },
+
+    getProjects() {
+      var self = this;
+      axios.get("/projects").then(function (response) {
+        console.log("response", response);
+        console.log("self: ", self);
+        // console.log("this inside then: ", this);
+        console.log("this.projects inside then: ", this.projects);
+        self.projects = response.data;
+      });
     },
     closeModal: function (e) {
       console.log("zatvorio");
@@ -73,6 +103,8 @@ Vue.component("projects-modal", {
 new Vue({
   el: "#main",
   data: {
+    showAbout: false,
+    //openModal: false,
     title: ["da original tru rastafaraj"],
     projects: [
       {
@@ -118,14 +150,20 @@ new Vue({
     });
   },
   methods: {
-    openModal: function () {
-      console.log("click");
-      // this.openModal = !this.openModal;
+    openModal: function (e) {
+      openModal: true;
+      console.log("click happens");
+      //console.log("propzz", this.props);
+      //this.$emit("open-modal");
     },
 
     closeModal: function () {
       console.log("from component to main");
       id: null;
+    },
+    closeModalMain: function () {
+      this.projects = null;
+      location.hash = "0";
     },
   },
 });

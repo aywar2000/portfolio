@@ -18,45 +18,43 @@
       </div>
     </header>
     <div id="main">
-      <ul class="proba-template">
-        <li v-for="project in projects" :key="project.id">
-          <p>{{ project.title }}</p>
-        </li>
-      </ul>
-      <div class="proba-template">
-        <h1>ABOUT ME</h1>
+      <div>
+        <button class="proba-template" @click="showAbout">
+          <h1>ABOUT ME</h1>
+        </button>
       </div>
       <div>
-        <!--v-for="project in projects"-->
-        <button class="proba-template" @click="openModal">
-          <!--click je ime eventa, do something=open modal-->
+        <button class="proba-template" @click="openModal=true">
           <h1>__PRO<br />JECTS</h1>
         </button>
       </div>
       <div class="proba-template">
         <h1>CON<br />TACT</h1>
       </div>
-      <projects-modal v-if="openModal === 'true'" :id="id"></projects-modal>
-      <komponenta-about v-show="showAbout"></komponenta-about>
+      <!-- <projects-modal v-show="openModal"></projects-modal> -->
+      <!-- <komponenta-about :show="showAbout" :id="title"></komponenta-about> -->
     </div>
-    <!-- <div class="canvas">
-      <canvas id="canv" width="600" height="200"></canvas>
-    </div> -->
-
-    <footer id="footer">sentient_internet</footer>
+    <div class="canvas-wrap">
+      <div class="canvas">
+        <canvas id="canv" width="600" height="200"></canvas>
+      </div>
+    </div>
+    <footer id="footer">jeste li za sarmu</footer>
 
     <!--OVO JE TEMPLATE ZA PROJECTS MODAL-->
     <script id="projects" type="text/x-template">
-      <div class="overlay">
-        <div class="modal">
-          <ul>
-            <li v-for="project in projects"  :title="title">
-              <p>{{ project.title }}</p>
-              <p>{{ project.description }}</p>
-            </li>
-          </ul>
-          <div class="images">   <!--novo-->
-            <img/>
+      <div  v-if="openModal">
+        <div class="overlay" @click.self="openModal = false;">
+          <div class="modal" v-for="project in projects" :key="id">
+            <ul>
+              <li>
+                <p>{{ project.title }}</p>
+                <p>{{ project.description }}</p>
+              </li>
+            </ul>
+            <div class="images">   <!--novo-->
+              <img/>
+            </div>
           </div>
         </div>
       </div>
